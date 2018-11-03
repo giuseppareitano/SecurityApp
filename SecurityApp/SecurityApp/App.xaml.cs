@@ -7,11 +7,12 @@ namespace SecurityApp
 {
 	public partial class App : Application
 	{
+        RestController client;
 		public App ()
 		{
 			InitializeComponent();
-
-			MainPage = new MainPage();
+            client = new RestController();
+			MainPage = new MainPage(client);
 		}
 
 		protected override void OnStart ()

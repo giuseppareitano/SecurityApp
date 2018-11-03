@@ -9,9 +9,16 @@ namespace SecurityApp
 {
 	public partial class MainPage : ContentPage
 	{
-		public MainPage()
+        RestController client; 
+		public MainPage(RestController client)
 		{
+            this.client = client;
 			InitializeComponent();
 		}
-	}
+
+        private async Task Button_ClickedAsync(object sender, EventArgs e)
+        {
+            await client.GetTemperatureAsync();
+        }
+    }
 }
