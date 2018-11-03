@@ -20,5 +20,11 @@ namespace SecurityApp
         {
             await client.GetTemperatureAsync();
         }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            var value = this.newTemperature.Text;
+            await client.PutTemperatureAsync(value);
+        }
     }
 }

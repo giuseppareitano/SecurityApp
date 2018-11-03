@@ -17,17 +17,24 @@ namespace SecurityApp
             client = new HttpClient();
         }
 
-        public async Task<List<string>> GetTemperatureAsync()
+        public async Task<Temperature> GetTemperatureAsync()
         {
-            var uri = new Uri("http://localhost:5000/api/temperatura");
+            var uri = new Uri("http://192.168.1.223:5000/api/temperatura");
             var response = await client.GetAsync(uri);
-            List<string> items = null;
+            Temperature temperature = null;
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                items = JsonConvert.DeserializeObject<List<string>>(content);
+                temperature = JsonConvert.DeserializeObject<Temperature>(content);
             }
-            return items;
+            return temperature;
+        }
+
+        public async Task<bool> PutTemperatureAsync(string newTemperature)
+        {
+            var uri = new Uri(string.Concat("http://192.168.1.223:5000/api/temperatura/",newTemperature));
+            var response = await client.PutAsync(uri, null);
+            return response.IsSuccessStatusCode;
         }
 
     }

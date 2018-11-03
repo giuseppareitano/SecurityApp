@@ -9,6 +9,8 @@
         <Label Text="Temperature:" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
+        <Button Text="Update Temperature" Clicked="Button_Clicked"></Button>
+        <Entry x:Name="newTemperature"></Entry>
         <Button Text="Press Me" Clicked="Button_ClickedAsync"></Button>
     </StackLayout>
 
